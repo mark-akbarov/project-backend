@@ -30,6 +30,6 @@
 >>> virtualenv .venv
 >>> source .venv/bin/activate
 >>> pip install -r requirements/local.txt
->>> python manage.py migrate --settings=config.settings.local
->>> python3 manage.py runserver --settings=config.settings.local
+>>> python manage.py migrate
+>>> python3 manage.py runserver
 ```
