@@ -19,14 +19,14 @@
 #### Create Database
 
 ```bash
->>> create role ulov_db with login password '2404';
->>> create database ulov_db with owner ulov_user;
+>>> create role project_user with login password 'password';
+>>> create database project_db with owner project_user;
 ```
 
 #### Django install
 
 ```bash
->>> git clone https://gitlab.com/00009998id/notify.git
+>>> git clone https://github.com/mark-akbarov/project-backend
 >>> virtualenv .venv
 >>> source .venv/bin/activate
 >>> pip install -r requirements/local.txt
