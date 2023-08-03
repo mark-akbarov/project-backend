@@ -1,9 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.views import APIView
 
-from user.serializers.passport_verification import PassportVerificationSerializer
-from user.models.passport_verification import PassportVerification
-from user.models.base import User
+from user.serializers.passport import PassportVerificationSerializer
+from user.models.passport import PassportVerification
 
 
 class PassportVerificationViewSet(ModelViewSet):

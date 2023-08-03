@@ -1,6 +1,6 @@
 from django.contrib import admin
-from user.models.base import User
-from user.models.otp_verification import OTPVerification
+from user.models.user import User
+from user.models.otp import OTPVerification
 
 
 admin.site.register(User)

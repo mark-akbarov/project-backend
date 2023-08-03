@@ -1,9 +1,10 @@
+from django.conf import settings
 import requests
 
 
-ESKIZ_EMAIL = "jasurbeksharofiddinov62@gmail.com"
-ESKIZ_PASSWORD = "EG7MdXEw0hryc5icKFjv8fO6RCDuuctuUldH0H0y"
-ESKIZ_URL = "https://notify.eskiz.uz/api/"
+ESKIZ_EMAIL = settings.ESKIZ_EMAIL
+ESKIZ_PASSWORD = settings.ESKIZ_PASSWORD
+ESKIZ_URL = settings.ESKIZ_URL
 
 
 def get_token():

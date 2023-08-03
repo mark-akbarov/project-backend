@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from user.models.passport_verification import PassportVerification
+from user.models.passport import PassportVerification
 
 
 class PassportVerificationSerializer(serializers.ModelSerializer):

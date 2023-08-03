@@ -3,7 +3,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from user.views.otp import OTPSignupView, OTPVerificationAPIView
-from user.views.passport_verification import PassportVerificationViewSet 
+from user.views.passport import PassportVerificationViewSet 
 
 
 router = DefaultRouter()

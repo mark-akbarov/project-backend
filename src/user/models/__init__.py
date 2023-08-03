@@ -1,3 +1,3 @@
-from .base import User
-from .otp_verification import OTPVerification
-from .passport_verification import PassportVerification
+from .user import User
+from .otp import OTPVerification
+from .passport import PassportVerification
