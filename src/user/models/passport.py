@@ -1,12 +1,11 @@
 from django.db import models
 
 from core.utils.base_model import BaseModel
-from file.models import File
 
 
 class PassportVerification(BaseModel):
     user = models.ForeignKey('user.User', on_delete=models.CASCADE, related_name='passport_verification')
-    image = models.ForeignKey(File, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='user-passport')
     serial_number = models.CharField(max_length=255, unique=True)
     pinfl = models.CharField(max_length=255, unique=True)
     

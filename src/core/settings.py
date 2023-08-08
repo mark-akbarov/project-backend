@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     
     # local
     'user',
-    'file',
 ]
 
 MIDDLEWARE = [

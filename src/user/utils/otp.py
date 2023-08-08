@@ -14,11 +14,23 @@ def otp_signup(phone_number: str):
     expiration_time = datetime.timedelta(minutes=10)
     not_expired = OTPVerification.objects.filter(created_at__gte=Now()-expiration_time, phone_number=phone_number)
     if not_expired:
-        return Response({"type": "E_MULTIPLE_REQUESTS", "message": "Too many requests have been made. Please try again after some time"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            {
+                "type": "E_MULTIPLE_REQUESTS", 
+                "message": "Too many requests have been made. Please try again after some time"
+                }, 
+            status=status.HTTP_400_BAD_REQUEST
+            )
     else:
         otp_code_generate(phone_number)
         verification = OTPVerification.objects.filter(phone_number=phone_number).order_by('-created_at').first()
-        return Response({"message": "Code has been sent", "code": verification.code}, status=status.HTTP_200_OK)
+        return Response(
+            {
+                "message": "Code has been sent", 
+                "code": verification.code
+                }, 
+            status=status.HTTP_200_OK
+            )
 
 
 def otp_code_generate(phone_number: str):
@@ -41,7 +53,10 @@ def otp_verification(phone_number: str, code: str):
         if OTPVerification.objects.filter(phone_number=phone_number, code=code, created_at__lte=Now()-expiration_time):
             verification = check.first()
             verification.is_expired = True
-            return Response({"type": "E_EXPIRED_VERIFICATION_CODE", "message": "Verification code has expired"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {
+                    "type": "E_EXPIRED_VERIFICATION_CODE", 
+                    "message": "Verification code has expired"}, status=status.HTTP_400_BAD_REQUEST)
         existing_user = User.objects.filter(phone_number=phone_number).first()
         if existing_user:
             token, _ = Token.objects.get_or_create(user=existing_user)

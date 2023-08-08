@@ -11,8 +11,6 @@ def signup(
     last_name: str, 
     email: str,
     phone_number: str,
-    unit_id: str,
-    vin_id: str, 
     password
     ):
     check_email = User.objects.filter(email=email, is_active=True).exists()
@@ -29,8 +27,6 @@ def signup(
         first_name=first_name,
         last_name=last_name,
         email=email,
-        unit_id=unit_id,
-        vin_id=vin_id,
         phone_number=phone_number,
         password=password
     )
@@ -43,8 +39,6 @@ def create_user(
     email: str,
     first_name: str, 
     last_name: str,  
-    unit_id: str,
-    vin_id: str,
     phone_number: str, 
     password=None
     ):
@@ -53,8 +47,6 @@ def create_user(
         email=email,
         first_name=first_name, 
         last_name=last_name,
-        unit_id=unit_id,
-        vin_id=vin_id,
         phone_number=phone_number,
         is_active=False,
         is_staff=False,

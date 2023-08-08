@@ -12,7 +12,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=255, null=True)
     latitude = models.CharField(max_length=255, null=True)
     longitude = models.CharField(max_length=255, null=True)
-    profile_picture = models.ImageField(upload_to='user/images/', help_text='User Images')
+    profile_picture = models.ImageField(upload_to='user', help_text='User Images')
     
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'phone_number']
