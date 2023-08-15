@@ -10,8 +10,6 @@ class User(AbstractUser):
     email = models.EmailField(max_length=255, null=True, unique=True)
     first_name = models.CharField(max_length=255, null=True)
     last_name = models.CharField(max_length=255, null=True)
-    latitude = models.CharField(max_length=255, null=True)
-    longitude = models.CharField(max_length=255, null=True)
     profile_picture = models.ImageField(upload_to='user', help_text='User Images')
     
     USERNAME_FIELD = 'username'

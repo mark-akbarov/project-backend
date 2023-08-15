@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 
-from user.serializers.signup import SignupSerializer
-from user.utils.signup import signup
+from account.serializers.signup import SignupSerializer
+from account.utils.signup import signup
 
 
 class SignupAPIView(APIView):

@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 
-from user.models.user import User
+from account.models.account import User
 
 
 def login(username: str, password, is_superuser=False):

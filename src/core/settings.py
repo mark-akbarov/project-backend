@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     
     # local
-    'user',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -94,7 +94,7 @@ DATABASES = {
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT')
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 
@@ -156,7 +156,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
-AUTH_USER_MODEL = 'user.User'
+AUTH_USER_MODEL = 'account.User'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -164,6 +164,18 @@ AUTH_USER_MODEL = 'user.User'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# 3rd party service credentials
+
 ESKIZ_EMAIL = os.getenv('ESKIZ_EMAIL')
 ESKIZ_PASSWORD = os.getenv('ESKIZ_PASSWORD')
 ESKIZ_URL = os.getenv('ESKIZ_URL')
+
+
+# Email Configurations
+
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')

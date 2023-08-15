@@ -2,11 +2,11 @@ from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
 
-from user.views.otp import OTPSignupView, OTPVerificationAPIView
-from user.views.passport import PassportVerificationViewSet 
-from user.views.login import LoginAPIView
-from user.views.signup import SignupAPIView
-from user.views.verification import VerifyUserAPIView, ReSendVerifyUserAPIView
+from account.views.otp import OTPSignupView, OTPVerificationAPIView
+from account.views.passport import PassportVerificationViewSet 
+from account.views.login import LoginAPIView
+from account.views.signup import SignupAPIView
+from account.views.verification import VerifyUserAPIView, ReSendVerifyUserAPIView
 
 
 router = DefaultRouter()

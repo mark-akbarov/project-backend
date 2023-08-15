@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework import permissions
 
-from user.serializers.otp import OTPSignupSerializer, OTPActivateAccountSerializer
-from user.utils.otp import otp_signup, otp_verification
+from account.serializers.otp import OTPSignupSerializer, OTPActivateAccountSerializer
+from account.utils.otp import otp_signup, otp_verification
 
 
 class OTPSignupView(APIView):

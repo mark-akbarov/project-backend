@@ -8,10 +8,14 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
 
-from user.models import VerifyUser, User
+from account.models import VerifyUser, User
 
 
 def send_user_verify_code(user: User, is_forgot_password=False):
+    """
+    This utility function sends an email with verification code
+    upon new user registration.
+    """
     code = randint(100_000, 999_999)
     if is_forgot_password is False:
         VerifyUser.objects.create(
@@ -47,7 +51,7 @@ def check_verify_signup_code(email, code):
         user.is_active = True
         user.save()
         token, _ = Token.objects.get_or_create(user=user)
-        return Response({'token': token.key})
+        return Response({"token": token.key})
     else:
         return Response({
             "type": "E_INVALID_CODE.", 

@@ -1,12 +1,9 @@
 from rest_framework import serializers
 
-from user.models.user import User
-
-from file.serializers import FileSerializer
+from account.models.account import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-    profile_picture = FileSerializer()
     class Meta:
         model = User
         fields = [

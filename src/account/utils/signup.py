@@ -1,32 +1,36 @@
-from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.response import Response
 
-from user.models.user import User
-from user.utils.verification import send_user_verify_code
+from account.models.account import User
+from account.utils.verification import send_user_verify_code
 
 
 def signup(
     username: str, 
+    email: str,
     first_name: str, 
     last_name: str, 
-    email: str,
     phone_number: str,
     password
     ):
-    check_email = User.objects.filter(email=email, is_active=True).exists()
-    if check_email is True:
+    """
+    Signup checks for email existence and sends a verification email 
+    in case there is not any user with the given email.
+    """
+    check_username = User.objects.filter(username=username, is_active=True).exists()
+    if check_username:
         return Response(
             {
-                'type': 'E_EMAIL_EXISTS', 
-                'message': 'Email already exists.'
+                'type': 'E_USERNAME_EXISTS', 
+                'message': 'Username already exists.'
              }, 
             status=status.HTTP_400_BAD_REQUEST
             )
     user = create_user(
         username=username,
+        email=email,
         first_name=first_name,
         last_name=last_name,
-        email=email,
         phone_number=phone_number,
         password=password
     )

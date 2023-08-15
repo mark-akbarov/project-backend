@@ -6,8 +6,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 
-from user.models.user import User
-from user.models.otp import OTPVerification
+from account.models.account import User
+from account.models.otp import OTPVerification
 
 
 def otp_signup(phone_number: str):
@@ -17,7 +17,7 @@ def otp_signup(phone_number: str):
         return Response(
             {
                 "type": "E_MULTIPLE_REQUESTS", 
-                "message": "Too many requests have been made. Please try again after some time"
+                "message": "Too many requests have been made. Please try again after some time."
                 }, 
             status=status.HTTP_400_BAD_REQUEST
             )
@@ -56,7 +56,10 @@ def otp_verification(phone_number: str, code: str):
             return Response(
                 {
                     "type": "E_EXPIRED_VERIFICATION_CODE", 
-                    "message": "Verification code has expired"}, status=status.HTTP_400_BAD_REQUEST)
+                    "message": "Verification code has expired."
+                    }, 
+                status=status.HTTP_400_BAD_REQUEST
+                )
         existing_user = User.objects.filter(phone_number=phone_number).first()
         if existing_user:
             token, _ = Token.objects.get_or_create(user=existing_user)

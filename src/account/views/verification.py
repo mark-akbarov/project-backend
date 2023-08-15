@@ -1,7 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
-from user.serializers.verification import UserVerifySerializer, ReSendVerifyUserSerializer
-from user.utils.verification import check_verify_signup_code, re_send_verify_user_code
+
+from account.serializers.verification import UserVerifySerializer, ReSendVerifyUserSerializer
+from account.utils.verification import check_verify_signup_code, re_send_verify_user_code
 
 
 class VerifyUserAPIView(APIView):
