@@ -5,6 +5,7 @@ from django.conf import settings
 
 from rest_framework import status
 from rest_framework.authtoken.models import Token
+from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 
 
@@ -50,8 +51,8 @@ def check_verify_signup_code(email, code):
         user = verify.user
         user.is_active = True
         user.save()
-        token, _ = Token.objects.get_or_create(user=user)
-        return Response({"token": token.key})
+        token = RefreshToken.for_user(user=user)
+        return Response({"refresh": str(token), "access": str(token.access_token)})
     else:
         return Response({
             "type": "E_INVALID_CODE.", 
